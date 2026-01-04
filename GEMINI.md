@@ -3,8 +3,10 @@
 ## 2026-01-04
 
 ### Lazygit Installation
-- **Status**: Installed via Snap.
-- **Command**: `sudo snap install lazygit`
+- **Status**: Installed manually (binary).
+- **Version**: 0.58.0
+- **Path**: `/usr/local/bin/lazygit`
+- **Reason**: Switched from Snap to manual binary to resolve strict confinement issues with hidden directories (e.g., `~/.tmux`).
 - **Tmux Binding**: `Prefix + g` (opens Lazygit in a popup).
 
 ### Ranger Configuration
