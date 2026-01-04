@@ -26,3 +26,12 @@
   - `Ranger` (f)
   - `Neovim` (e)
   - `Config Edit` (C)
+
+## 2026-01-04 (Update 2)
+- **Fix**: Resolved `lazygit` permission denied error by restoring ownership of `~/.tmux` to user.
+- **Change**: Resolved keybinding conflict for Ranger.
+  - Old: `Prefix + f` (Conflicted with `Prefix + C-f` pane nav).
+  - New: `Prefix + d` (Matches Emacs `C-x d` Dired convention).
+- **Change**: Remapped Detach Client.
+  - Old: `Prefix + d`
+  - New: `Prefix + C-d`
