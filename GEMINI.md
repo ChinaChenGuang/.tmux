@@ -37,3 +37,11 @@
 - **Change**: Remapped Detach Client.
   - Old: `Prefix + d`
   - New: `Prefix + C-d`
+
+## 2026-01-05
+
+### Tmux Configuration
+- **New Plugin**: `alexwforsythe/tmux-which-key`
+- **Purpose**: Provides a popup menu displaying available keybindings, similar to Emacs/Neovim `which-key`.
+- **Status**: Installed via TPM.
+- **Trigger**: `Prefix + Space` (to avoid conflict with Emacs-style double-prefix).
