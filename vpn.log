@@ -1,0 +1,9 @@
+spawn sudo openconnect -v --protocol=gp 129.227.155.121:10443
+[sudo] password for chen: 
+POST https://129.227.155.121:10443/global-protect/prelogin.esp?tmp=tmp&clientVer=4100&clientos=Linux
+Attempting to connect to server 129.227.155.121:10443
+Connected to 129.227.155.121:10443
+SSL negotiation with 129.227.155.121
+SSL connection failure: The TLS connection was non-properly terminated.
+Failed to open HTTPS connection to 129.227.155.121
+Failed to complete authentication

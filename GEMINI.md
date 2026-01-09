@@ -45,3 +45,15 @@
 - **Purpose**: Provides a popup menu displaying available keybindings, similar to Emacs/Neovim `which-key`.
 - **Status**: Installed via TPM.
 - **Trigger**: `Prefix + Space` (to avoid conflict with Emacs-style double-prefix).
+
+## 2026-01-09
+
+### Clipboard Synchronization
+- **Feature**: Added bi-directional clipboard sync between system (X11/Wayland) and Tmux.
+- **Scripts**:
+  - `copy_wrapper.sh`: Auto-detects Wayland/X11 for copying.
+  - `paste_wrapper.sh`: Auto-detects Wayland/X11 for pasting.
+- **Keybindings**:
+  - `Prefix + ]`: Paste from system clipboard.
+  - Copy mode selections automatically pipe to system clipboard.
+- **Offline Installer**: Updated `pack_for_offline.sh` to include `paste_wrapper.sh`.

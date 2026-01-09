@@ -19,6 +19,7 @@ cp -r plugins "$STAGING_DIR/dot_tmux/"
 cp patch_status_bar.sh "$STAGING_DIR/dot_tmux/"
 cp restore_status_bar.sh "$STAGING_DIR/dot_tmux/"
 cp copy_wrapper.sh "$STAGING_DIR/dot_tmux/"
+cp paste_wrapper.sh "$STAGING_DIR/dot_tmux/"
 
 # Remove .git directories to save space and avoid issues on offline server
 echo "Cleaning up .git directories from plugins..."
