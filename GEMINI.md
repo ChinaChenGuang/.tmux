@@ -57,3 +57,13 @@
   - `Prefix + ]`: Paste from system clipboard.
   - Copy mode selections automatically pipe to system clipboard.
 - **Offline Installer**: Updated `pack_for_offline.sh` to include `paste_wrapper.sh`.
+
+## 2026-01-09 (Update 2)
+
+### Fix: Tmux Offline Installation
+- **Issue**: `tpm` returned error code 1 on offline servers.
+- **Cause**: `tmux-which-key` plugin attempted to run a Python build script (`build.py`) which failed due to missing Python/dependencies or version mismatch in the offline environment.
+- **Resolution**:
+  - Disabled auto-build in `.tmux.conf` using `set -g @tmux-which-key-disable-autobuild 1`.
+  - Manually generated `plugins/tmux-which-key/plugin/init.tmux` on the host machine.
+  - Repackaged `tmux_offline_installer.tar.gz` to include the pre-compiled `init.tmux` and updated config.
