@@ -65,4 +65,5 @@
 - **Changes**:
   - `.tmux.conf`: Added conditional checks for `pane-border-lines` (3.4+) and `display-popup -b` (3.3+).
   - `pack_for_offline.sh`: Added safety checks for missing `plugins` directory to prevent script failure.
+- **Automation**: Added auto-install logic for TPM in `.tmux.conf`. If the `plugins/tpm` directory is missing, it will automatically clone from GitHub and run `install_plugins` upon the first launch.
 - **Note**: The offline installer package (`tmux_offline_installer.tar.gz`) was not updated because the `plugins/` directory is missing on this environment. It should be regenerated on a machine with plugins installed.
