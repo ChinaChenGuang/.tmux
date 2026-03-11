@@ -12,8 +12,12 @@ mkdir -p "$STAGING_DIR/dot_tmux"
 
 echo "Copying configuration files..."
 cp .tmux.conf "$STAGING_DIR/dot_tmux/"
-# Copy plugins
-cp -r plugins "$STAGING_DIR/dot_tmux/"
+# Copy plugins (if they exist)
+if [ -d plugins ]; then
+    cp -r plugins "$STAGING_DIR/dot_tmux/"
+else
+    echo "Warning: 'plugins' directory not found. The archive will NOT include any plugins."
+fi
 
 # Copy patch script
 cp patch_status_bar.sh "$STAGING_DIR/dot_tmux/"
@@ -22,8 +26,10 @@ cp copy_wrapper.sh "$STAGING_DIR/dot_tmux/"
 cp paste_wrapper.sh "$STAGING_DIR/dot_tmux/"
 
 # Remove .git directories to save space and avoid issues on offline server
-echo "Cleaning up .git directories from plugins..."
-find "$STAGING_DIR/dot_tmux/plugins" -name ".git" -type d -exec rm -rf {} + 2>/dev/null || true
+if [ -d "$STAGING_DIR/dot_tmux/plugins" ]; then
+    echo "Cleaning up .git directories from plugins..."
+    find "$STAGING_DIR/dot_tmux/plugins" -name ".git" -type d -exec rm -rf {} + 2>/dev/null || true
+fi
 
 # Create install script
 echo "Creating install script..."
