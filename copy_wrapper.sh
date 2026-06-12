@@ -26,13 +26,19 @@ fi
 # --- 2. OSC 52 (同步到宿主机终端) ---
 # 即使 VM Tools 失效，只要终端支持 OSC 52 (如 WezTerm, iTerm2)，也能同步到宿主机
 if [ -n "$TMUX" ] && command -v base64 > /dev/null 2>&1; then
-    # 获取当前连接的客户端 TTY
-    target_tty=$(tmux display-message -p "#{client_tty}" 2>/dev/null)
+    # 检查是否为 SSH 连接。
+    # 避免在本地的 xfce-terminal 或 gnome-terminal 等不支持 OSC 52 的终端中输出乱码。
+    is_ssh=$(tmux show-environment 2>/dev/null | grep -E '^(SSH_CONNECTION|SSH_CLIENT)=')
     
-    if [ -w "$target_tty" ]; then
-        # 构造 OSC 52 序列
-        # \033]52;c;BASE64_CONTENT\a
-        payload=$(echo -n "$input" | base64 -w0)
-        printf "\033]52;c;%s\a" "$payload" > "$target_tty"
+    if [ -n "$is_ssh" ]; then
+        # 获取当前连接的客户端 TTY
+        target_tty=$(tmux display-message -p "#{client_tty}" 2>/dev/null)
+        
+        if [ -w "$target_tty" ]; then
+            # 构造 OSC 52 序列
+            # \033]52;c;BASE64_CONTENT\a
+            payload=$(echo -n "$input" | base64 -w0)
+            printf "\033]52;c;%s\a" "$payload" > "$target_tty"
+        fi
     fi
 fi
